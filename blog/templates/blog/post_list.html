@@ -5,10 +5,10 @@
     <title>Блог</title>
 </head>
 <body style="font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px;">
-    <h1>Ласкаво просимо до мого блогу!</h1>
+    <h1>Ласкаво просимо до блогу імені Максиміліана Олександровича)!</h1>
     <a href="{% url 'post_new' %}" style="display: inline-block; background: blue; color: white; padding: 10px; text-decoration: none; border-radius: 5px;">+ Додати новий пост</a>
     {% for post in posts %}
-        <article style="border: 1px solid #ccc; padding: 20px; margin-bottom: 30px; border-radius: 8px;">
+        <article style="border: 1px solid #ccc; padding: 20px; margin-bottom: 30px; border-radius: 8px; word-break: break-word;">
             <h2 style="margin-top: 0;">{{ post.title }}</h2>
             <p style="color: #666; font-size: 0.9em;">
                 <i>Категорія: {{ post.category }} | Опубліковано: {{ post.pub_date|date:"d M Y" }}</i>
@@ -18,10 +18,10 @@
 
             <div style="margin-top: 20px; padding-top: 15px; border-top: 2px dashed #eee;">
                 <h3>Коментарі:</h3>
-                
+
                 <a href="{% url 'add_comment' pk=post.pk %}" style="color: green; text-decoration: none; font-weight: bold;">✍️ Написати коментар</a>
                 {% for comment in post.comments.all %}
-                    <div style="background-color: #f9f9f9; padding: 10px; margin-bottom: 10px; border-radius: 5px;">
+                    <div style="background-color: #f9f9f9; padding: 10px; margin-bottom: 10px; border-radius: 5px; word-break: break-word;">
                         <strong>{{ comment.author_name }}</strong>
                         <small style="color: #888;">({{ comment.created_date|date:"d.m.Y H:i" }})</small>
                         <p style="margin: 5px 0 0 0;">{{ comment.content }}</p>
