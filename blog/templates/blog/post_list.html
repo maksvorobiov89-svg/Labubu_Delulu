@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Блог</title>
+</head>
+<body>
+    <h1>Ласкаво просимо до мого блогу!</h1>
+
+    {% for post in posts %}
+        <article style="border: 1px solid #ccc; padding: 15px; margin-bottom: 20px;">
+            <h2>{{ post.title }}</h2>
+            <p><i>Категорія: {{ post.category }} | Опубліковано: {{ post.pub_date|date:"d M Y" }}</i></p>
+            <p>{{ post.content }}</p>
+            <p><strong>Автор: {{ post.author }}</strong></p>
+        </article>
+    {% empty %}
+        <p>Поки що немає жодного запису.</p>
+    {% endfor %}
+
+</body>
+</html>
