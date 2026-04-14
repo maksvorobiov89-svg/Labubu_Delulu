@@ -2,12 +2,12 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Post
 from .forms import PostForm, CommentForm # Імпортуємо наші нові форми
 
-# 1. Твоя існуюча функція для показу всіх постів
+# 1. функція для показу всіх постів
 def post_list(request):
     posts = Post.objects.all().order_by('-pub_date')
     return render(request, 'blog/post_list.html', {'posts': posts})
 
-# 2. НОВА ФУНКЦІЯ: Створення поста
+# 2. функція створення поста
 def post_new(request):
     if request.method == "POST":
         form = PostForm(request.POST)
@@ -18,7 +18,7 @@ def post_new(request):
         form = PostForm() # Показуємо порожню форму
     return render(request, 'blog/post_edit.html', {'form': form})
 
-# 3. НОВА ФУНКЦІЯ: Додавання коментаря
+# 3. Функція додавання коментаря
 def add_comment(request, pk):
     post = get_object_or_404(Post, pk=pk) # Шукаємо пост, до якого пишуть коментар
     if request.method == "POST":
